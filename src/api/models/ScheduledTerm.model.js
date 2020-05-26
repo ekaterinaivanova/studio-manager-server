@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { validateTimeIntervals } from '../middleware/ScheduledTerm.validator';
+import { validateTimeIntervals } from '../../middleware/ScheduledTerm.validator';
 
 const { Schema } = mongoose;
 

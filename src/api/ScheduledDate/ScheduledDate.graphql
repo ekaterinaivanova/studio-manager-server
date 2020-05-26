@@ -1,0 +1,17 @@
+scalar Date
+
+type ScheduledDate {
+  id: ID!
+  date: Date!
+  # scheduledTerms: [ScheduledTerm!]
+}
+ extend type Query {
+  scheduledDate(id: ID!): ScheduledDate
+  scheduledDates: [ScheduledDate!]!
+}
+
+ extend type Mutation {
+  newScheduledDate(date: Date!): ScheduledDate!
+  removeScheduledDate(id: ID!): ScheduledDate!
+}
+ 

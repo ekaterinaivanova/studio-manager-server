@@ -1,0 +1,14 @@
+type Hall {
+  id: ID!
+  name: String!
+  participantLimit: Int!
+}
+ type Query {
+  hall(id: ID!): Hall
+  halls: [Hall]!
+}
+
+ type Mutation {
+  newHall(name: String!, participantLimit: Int!): Hall!
+  removeHall(id: ID!): Hall!
+}
