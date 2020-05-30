@@ -3,7 +3,6 @@ const hall = (_, args, ctx) => {
 };
 
 const halls = (_, args, ctx) => {
-  console.log('Wat')
   return ctx.models.Hall.find({});
 };
 const newHall = (_, args, ctx) => {

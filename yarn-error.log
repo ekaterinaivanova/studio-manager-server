@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/ekaterinaivanova/Documents/projects/studio-manager/studio-manager-server/package.json: Unexpected token } in JSON at position 1092
+  SyntaxError: /Users/ekaterinaivanova/Documents/projects/studio-manager/studio-manager-server/package.json: Unexpected token } in JSON at position 1079
       at JSON.parse (<anonymous>)
       at /Users/ekaterinaivanova/.yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -29,7 +29,7 @@ npm manifest:
     "main": "src/index.js",
     "scripts": {
       "build": "babel index.js --out-file compiled/index.js",
-      "dev": "nodemon --exec babel-node src/index.js"
+      "dev": "nodemon  -e js,graphql --exec babel-node src/index.js"
     },
     "repository": {
       "type": "git",
@@ -42,12 +42,12 @@ npm manifest:
     },
     "homepage": "https://github.com/ekaterinaivanova/studio-manager-server#readme",
     "dependencies": {
+      "apollo-server": "^2.14.1",
       "babel-cli": "^6.26.0",
-      "graphql-yoga": "^1.18.3",
+      "dataloader": "^1.4.0",
+      "lodash.merge": "^4.6.2",
       "luxon": "^1.23.0",
-      "mongoose": "^5.9.7",
-      "dataloader": "^1.4.0"
-  
+      "mongoose": "^5.9.7"
     },
     "devDependencies": {
       "babel-eslint": "^10.1.0",
@@ -57,8 +57,6 @@ npm manifest:
       "eslint": "^6.8.0",
       "eslint-plugin-babel": "^5.3.0",
       "eslint-plugin-react": "^7.19.0",
-      "graphql": "^0.13.2",
-      "graphql-tools": "^2.24.0",
     }
   }
 

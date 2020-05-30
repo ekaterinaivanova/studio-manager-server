@@ -1,0 +1,27 @@
+type ScheduledTerm {
+  id: ID!
+  timeFrom: String!
+  timeTo: String!
+  hall: Hall!
+  scheduledDate: ScheduledDate!
+  participantLimit: Int
+}
+
+input NewScheduledTermInput {
+  timeFrom: String!
+  timeTo: String!
+  hall: String!
+  scheduledDate: String!,
+  participantLimit: Int
+}
+
+ extend type Query {
+  scheduledTerm(id: ID!): ScheduledTerm
+  scheduledTerms: [ScheduledTerm!]!
+}
+
+ extend type Mutation {
+  newScheduledTerm(input: NewScheduledTermInput!): ScheduledTerm!
+  removeScheduledTerm(id: ID!): ScheduledTerm!
+}
+ 

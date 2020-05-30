@@ -1,0 +1,27 @@
+  directive @formatDate (format: String = "yyyy. mm. dd.") on FIELD_DEFINITION
+
+
+type User {
+  id: ID!
+  name: String!
+  lastName: String!
+  birthDate: Date!
+  formattedDate: String!  @formatDate
+}
+
+input NewUserInput {
+  name: String!
+  lastName: String!
+  birthDate: Date!
+}
+
+ extend type Query {
+  user(id: ID!): User
+  users: [User!]!
+}
+
+ extend type Mutation {
+  newUser(input: NewUserInput!): User!
+  removeUser(id: ID!): User!
+}
+ 

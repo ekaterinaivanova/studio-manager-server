@@ -12,7 +12,14 @@ const newScheduledDate = (_, args, ctx) => {
   return scheduledDateResult.save();
 };
 const removeScheduledDate = async (_, args, ctx) => {
-  
+  const scheduledDate = await ctx.models.ScheduledDate
+    .findByIdAndRemove(args.id)
+    .exec();
+
+  if (!scheduledDate) {
+    throw new Error('No resource');
+  }
+  return scheduledDate;
 };
 
 module.exports = {

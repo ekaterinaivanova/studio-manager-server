@@ -24,12 +24,12 @@ const scheduledTerm = new Schema({
     validate: timeValidator
   },
   participantLimit: { type: Number },
-  scheduledDateId: {
+  scheduledDate: {
     required: true,
     type: Schema.Types.ObjectId,
     ref: 'ScheduledDate'
   },
-  hallId: {
+  hall: {
     required: true,
     type: Schema.Types.ObjectId,
     ref: 'Hall'

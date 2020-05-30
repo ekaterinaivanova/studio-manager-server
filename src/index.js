@@ -1,6 +1,8 @@
-const { GraphQLServer } = require('graphql-yoga');
-const gqlServerConfig = require('./api');
-require('./db')();
+import { ApolloServer } from 'apollo-server';
+import gqlServerConfig from './api';
+
+import db from './db';
+db();
 
 const serverOptions = {
   port: 5000,
@@ -8,5 +10,13 @@ const serverOptions = {
   playground: '/docs'
 };
 
-const server = new GraphQLServer(gqlServerConfig);
-server.start(serverOptions, ({ port }) => console.log(`Server on port ${port}`));
+let server = new ApolloServer(gqlServerConfig);
+
+async function startServer() {
+
+  let { url } = await server.listen(serverOptions.port);
+  // eslint-disable-next-line no-console
+  console.log(`🚀 Server ready at ${url}`);
+
+}
+startServer();

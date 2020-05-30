@@ -5,9 +5,10 @@ import { DateTime, Interval } from 'luxon';
 async function validateTimeIntervals(next) {
   const ScheduledTerm = mongoose.model('scheduledTerm');
   const _this = this;
+  console.log('_this', _this)
   const filter = {
-    scheduledDateId: _this.scheduledDateId,
-    hallId: _this.hallId
+    scheduledDate: _this.scheduledDate,
+    hall: _this.hall
   };
   const classMinLimit = 30;
   let validationResult;
@@ -42,9 +43,9 @@ async function validateTimeIntervals(next) {
   }
   // LIMIT VALIDATION
   if (validationResult == null) {
-    const Hall = mongoose.model('hall');
+    const Hall = mongoose.model('Hall');
     try {
-      const hall = await Hall.findById(_this.hallId);
+      const hall = await Hall.findById(_this.hall);
       if (hall.participantLimit != null && _this.participantLimit > hall.participantLimit) {
         validationResult = new Error(`Selected hall can allow max ${hall.participantLimit} participants`);
       }
@@ -53,6 +54,7 @@ async function validateTimeIntervals(next) {
     }
   }
 
+  console.log('validationResult', validationResult)
   next(validationResult);
 }
 
